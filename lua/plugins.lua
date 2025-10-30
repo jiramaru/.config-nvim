@@ -11,8 +11,10 @@ local plugins = {
   require("plugins.lua-line"),
   require("plugins.alpha"),
   require("plugins.autoclose"),
-  require("plugins.avante"),
-  require("plugins.catppuccin"),
+  --require("plugins.avante"),
+  --require("plugins.catppuccin"),
+  require("plugins.tokyonight"),
+  require("lua.plugins.claudius"),
 }
 
 return plugins
