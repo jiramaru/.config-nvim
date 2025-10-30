@@ -7,3 +7,8 @@ vim.cmd("set relativenumber")
 
 vim.g.mapleader = " "
 --vim.g.maplocalleader = "\\"
+
+
+-- leave insertMode and save the file by pressing jk
+vim.keymap.set('i', 'jk', '<Esc>:w<CR>:echo "💥 " . expand("%:t") . " 👈🏾 has been saved 😎✌🏾 "<CR>',
+  { noremap = true, silent = false })
