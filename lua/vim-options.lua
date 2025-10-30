@@ -12,3 +12,7 @@ vim.g.mapleader = " "
 -- leave insertMode and save the file by pressing jk
 vim.keymap.set('i', 'jk', '<Esc>:w<CR>:echo "💥 " . expand("%:t") . " 👈🏾 has been saved 😎✌🏾 "<CR>',
   { noremap = true, silent = false })
+
+
+-- enable clipboard integration
+vim.opt.clipboard = 'unnamedplus' -- For Linux
