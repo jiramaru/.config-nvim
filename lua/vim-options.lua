@@ -16,3 +16,16 @@ vim.keymap.set('i', 'jk', '<Esc>:w<CR>:echo "💥 " . expand("%:t") . " 👈🏾
 
 -- enable clipboard integration
 vim.opt.clipboard = 'unnamedplus' -- For Linux
+
+
+-- Auto-adjust scrolloff to half the window height
+vim.api.nvim_create_autocmd("VimResized", {
+  callback = function()
+    vim.opt.scrolloff = math.floor(vim.api.nvim_win_get_height(0) / 2)
+  end,
+})
+
+-- Set initial scrolloff
+vim.opt.scrolloff = math.floor(vim.api.nvim_win_get_height(0) / 2)
+
+vim.opt.scrolloff = 10

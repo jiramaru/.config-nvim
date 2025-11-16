@@ -22,7 +22,7 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pylsp", "ts_ls", "cssmodules_ls", "eslint" },
+        ensure_installed = { "lua_ls", "pylsp", "ts_ls", "cssmodules_ls", "eslint", "intelephense" },
       })
     end,
   },
@@ -70,6 +70,32 @@ return {
           root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "next.config.js"),
         })
       end
+
+
+      -- PHP (Intelephense)
+      if lspconfig.intelephense then
+        lspconfig.intelephense.setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+          filetypes = { "php" },
+          settings = {
+            intelephense = {
+              files = {
+                maxSize = 5000000, -- Optional: increase file size limit
+              },
+              stubs = { "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "curl", "date",
+                "dom", "exif", "fileinfo", "filter", "gd", "gettext", "hash", "iconv",
+                "intl", "json", "libxml", "mbstring", "mcrypt", "mysqli", "openssl",
+                "pcntl", "pcre", "PDO", "pdo_mysql", "Phar", "posix", "readline",
+                "Reflection", "session", "SimpleXML", "soap", "sockets", "sodium",
+                "SPL", "sqlite3", "standard", "tidy", "tokenizer", "xml", "xmlreader",
+                "xmlwriter", "xsl", "Zend OPcache", "zip", "zlib" },
+              diagnostics = { enable = true }, -- enable error/warning diagnostics
+            },
+          },
+        })
+      end
+
 
       -- CSS Modules
       if lspconfig.cssmodules_ls then
