@@ -83,6 +83,9 @@ return {
               files = {
                 maxSize = 5000000, -- Optional: increase file size limit
               },
+              environment = {
+                includePaths = { "vendor" } -- include Laravel framework code
+              },
               stubs = { "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "curl", "date",
                 "dom", "exif", "fileinfo", "filter", "gd", "gettext", "hash", "iconv",
                 "intl", "json", "libxml", "mbstring", "mcrypt", "mysqli", "openssl",
