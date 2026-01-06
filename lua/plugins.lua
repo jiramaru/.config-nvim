@@ -7,13 +7,18 @@ local plugins = {
   require("plugins.completions"),
   require("plugins.treesitter"),
   require("plugins.telescope"),
-  require("plugins.neo-tree"),
+  --require("plugins.neo-tree"),
   require("plugins.lua-line"),
   require("plugins.alpha"),
   require("plugins.autoclose"),
   --require("plugins.avante"),
   --require("plugins.catppuccin"),
   require("plugins.tokyonight"),
+  require("plugins.copilot"),
+  require("plugins.fterm"),
+  require("plugins.gitsigns"),
+  require("plugins.barbar"),
+  require("plugins.nvim-tree")
 }
 
 return plugins
