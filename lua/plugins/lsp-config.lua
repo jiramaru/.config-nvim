@@ -83,6 +83,9 @@ return {
               files = {
                 maxSize = 5000000, -- Optional: increase file size limit
               },
+              environment = {
+                includePaths = { "vendor" } -- include Laravel framework code
+              },
               stubs = { "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "curl", "date",
                 "dom", "exif", "fileinfo", "filter", "gd", "gettext", "hash", "iconv",
                 "intl", "json", "libxml", "mbstring", "mcrypt", "mysqli", "openssl",
@@ -106,6 +109,30 @@ return {
       if lspconfig.eslint then
         lspconfig.eslint.setup({ on_attach = on_attach, capabilities = capabilities })
       end
+    end,
+  },
+
+  -- Flutter tools
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = function()
+      require("flutter-tools").setup({
+        lsp = {
+          on_attach = function(client, bufnr)
+            vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+            local opts = { buffer = bufnr }
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+          end,
+          capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        },
+      })
     end,
   },
 }
